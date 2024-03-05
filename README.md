@@ -28,10 +28,6 @@ Clone the repo from GitHub
 
 `git clone https://github.com/jtishey/baseline_check.git`
 
-or
-
-`git clone git@github.com:jtishey/baseline_check.git`
-
 
 ### Install Requirements
 

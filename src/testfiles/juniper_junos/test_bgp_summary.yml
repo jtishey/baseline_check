@@ -1,0 +1,10 @@
+---
+- show_bgp_summary:
+  command: show bgp summary
+  ignore-null: False
+  iterate: [Establ, Open]
+  blacklist: [Peer]
+  tests:
+    - no-diff: [0, -1]
+      info: "PASSED! BGP session to {{ pre[0] }} is still {{ pre[-1] }}"
+      err: "FAILED! BGP session to {{ pre[0] }} was {{ pre[-1] }} and is now {{ post[-1] }}"

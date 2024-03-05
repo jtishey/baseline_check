@@ -1,0 +1,16 @@
+bcrypt>=3.1.6
+cffi>=1.12.1
+colorama>=0.4.1
+cryptography>=2.5
+easysnmp>=0.2.4
+Jinja2>=2.10
+MarkupSafe>=1.1.0
+mysql-connector-python
+netmiko>=3.1.0
+paramiko>=2.7.1
+prettytable
+PyYAML>=3.13
+scp>=0.13.2
+six>=1.12.0
+textfsm>=0.4.1
+easysnmp

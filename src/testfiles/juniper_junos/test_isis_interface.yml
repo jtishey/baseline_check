@@ -1,0 +1,11 @@
+---
+- show_isis_interface:
+  command: show isis interface
+  ignore-null: False
+  iterate: [all]
+  blacklist: [Interface, database, '^', error, unning]
+  tests:
+    - no-diff: [0, -1]
+      info: "PASSED! ISIS interface {{ pre[0] }} metrics are still {{ pre[-1] }}"
+      err: "FAILED! ISIS interface {{ pre[0] }} metrics changed from {{ pre[-1] }} to {{ post[-1] }}"
+

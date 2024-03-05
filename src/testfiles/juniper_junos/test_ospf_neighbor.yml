@@ -1,0 +1,10 @@
+---
+- show_ospf_neighbor:
+  command: show ospf neighbor
+  ignore-null: True
+  iterate: [all]
+  blacklist: [Interface, '^', error, unning]
+  tests:
+    - no-diff: [0, 1, 2]
+      info: "PASSED! OSPF adj to {{ pre[0] }} on {{ pre[1] }} is still {{ pre[2] }}"
+      err: "FAILED! OSPF adj on {{ pre[1] }} was {{ pre[0] }} ({{ pre[2] }}) and is now {{ post[0] }} ({{ post[2] }})"

@@ -1,0 +1,11 @@
+---
+- show_ospf_neighbor:
+  command: show ospf neighbor
+  ignore-null: True
+  iterate: [all]
+  blacklist: [eighbor, nterface, '^', Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+  tests:
+    - no-diff: [0, 2, -1]
+      info: "PASSED! OSPF neighbor {{ pre[0] }} on {{ pre[-1] }} is still {{ pre[2] }}"
+      err: "FAILED! OSPF neighbor to {{ pre[0] }} was {{ pre[2] }} on {{ pre[-1]}} and is now {{ post[2] }}"
+

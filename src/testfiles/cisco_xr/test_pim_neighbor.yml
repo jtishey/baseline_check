@@ -1,0 +1,11 @@
+---
+- show_pim_neighbor:
+  command: show pim neighbor
+  ignore-null: True
+  iterate: [all]
+  blacklist: [eighbor, '---', '^', capable, Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+  tests:
+    - no-diff: [0, 1]
+      info: "PASSED! PIM neighbor on {{ pre[0] }} is still {{ pre[1] }}"
+      err: "FAILED! PIM neighbor on {{ pre[0] }} was {{ pre[1] }} and is now {{ post[1] }}"
+

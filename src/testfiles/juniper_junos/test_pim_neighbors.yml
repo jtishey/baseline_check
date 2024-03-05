@@ -1,0 +1,10 @@
+---
+- show_pim_neighbors:
+  command: show pim neighbors
+  ignore-null: True
+  iterate: [all]
+  blacklist: ['=', 'Instance', 'Instance:', 'Interface', '^', error, unning]
+  tests:
+    - no-diff: [-1, 0]
+      info: "PASSED! PIM neighbor {{ pre[-1] }} is still on interface {{ pre[0] }}"
+      err: "FAILED! PIM neighbor {{ pre[-1] }} changed from interface {{ pre[0] }} to {{ post[0] }}"

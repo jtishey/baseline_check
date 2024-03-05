@@ -1,0 +1,10 @@
+---
+    - show_mda:
+      command: show mda
+      ignore-null: False
+      iterate: [all]
+      blacklist: ['===', '---', 'Summary', 'State', 'Slot']
+      tests:
+        - no-diff: [-4, -3, -2, -1]
+          info: "PASSED! MDA {{ pre[-3] }} is still {{ pre[-2] }}/{{ pre[-1] }}"
+          err: "FAILED! MDA {{ pre[-3] }} was {{ pre[-2] }}/{{ pre[-1] }} now {{ post[-2] }}/{{ post[-1] }}"

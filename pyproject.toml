@@ -1,0 +1,48 @@
+[project]
+
+[tool.pylint.messages_control]
+disable = [
+  "R",     # Refactoring
+  "C0103", # invalid-name
+  "C0411", # wrong-import-order
+  "C0413", # wrong-import-position
+  "E0401", # import-error
+  "E1101", # no-member
+  "W0621", # redefined-outer-name
+  "W0702", # bare-except
+  "W0703", # broad-except
+  "C0206", # consider-using-dict-items
+  "I1101", # c-extension-no-member
+]
+
+[tool.pylint.format]
+max-line-length = "110"
+variable-rgx="[a-z0-9_]{1,30}$"
+const-rgx="[a-z\\_][a-z0-9\\_]{2,30}$"
+
+[tool.black]
+line-length = 110
+target-version = ['py36']
+include = '\.pyi?$'
+exclude = '''
+
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | env
+    | \.env
+    | venv
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+  | setup.py           # also separately exclude a file named foo.py in
+                     # the root of the project
+)
+'''

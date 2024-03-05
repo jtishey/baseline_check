@@ -1,0 +1,11 @@
+---
+- show_l2vpn:
+  command: show l2vpn xconnect detail
+  ignore-null: True
+  iterate: ['neighbor']
+  blacklist: []
+  tests:
+    - no-diff: [5, 2, 8]
+      info: "PASSED! XCONNECT ID {{ pre[5] }} to {{ pre[2] }} is still {{ pre[8] }}"
+      err:  "FAILED! XCONNECT ID {{ pre[5] }} to {{ pre[2] }} was {{ pre[8] }} is now {{ post[8] }}"
+

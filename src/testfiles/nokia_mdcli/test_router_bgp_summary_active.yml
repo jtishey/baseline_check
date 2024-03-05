@@ -1,0 +1,10 @@
+---
+- show_router_bgp_summary_active:
+  command: show router bgp summary active
+  ignore-null: False
+  iterate: [all]
+  blacklist: []
+  tests:
+    - delta: [0, 3, .01]
+      info: "PASSED! BGP active routes from {{ pre[0] }} within 1%: {{ pre[3] }}/{{ post[3] }} ({{ delta }} change)"
+      err: "FAILED! BGP active routes from {{ pre[0] }} changed >1%: {{ pre[3] }}/{{ post[3] }} ({{ delta }} change))"

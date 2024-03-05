@@ -1,0 +1,10 @@
+---
+- show_chassis_fpc:
+  command: show chassis fpc  
+  ignore-null: True
+  iterate: [all]
+  blacklist: [Slot, Temp, '^', show, error]
+  tests:
+    - no-diff: [0,1]
+      info: "PASSED! FPC in slot {{ pre[0] }} is still {{ pre[1] }}"
+      err: "FAILED! FPC in slot {{ pre[0] }} was {{ pre[1] }} and is {{ post[1] }}"

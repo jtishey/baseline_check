@@ -1,0 +1,10 @@
+---
+- show_chassis:
+  command: show chassis
+  ignore-null: False
+  iterate: [':']
+  blacklist: ['Specified', '[/]']
+  tests:
+    - no-diff: [0, -1]
+      info: "PASSED! {{ pre[0] }} is still {{ pre[-1] }}"
+      err: "FAILED! {{ pre[0] }} was {{ pre[-1] }} and is now {{ post[-1] }}"

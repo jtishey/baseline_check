@@ -1,0 +1,10 @@
+---
+- show_ldp_interface:
+  command: show router ldp interface
+  ignore-null: False
+  iterate: [all]
+  blacklist: ['===', 'Interface', '[/]', '---', 'ipv', 'Time', '^', 'MINOR', Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+  tests:
+    - no-diff: [0, 1]
+      info: "PASSED! LDP interface {{ pre[0] }} still {{ pre[1] }}"
+      err: "FAILED! LDP interface {{ pre[0] }} changed from {{ pre[1] }} to {{ post[1] }}"

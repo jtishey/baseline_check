@@ -1,0 +1,10 @@
+---
+- show_service_21_sub_hosts:
+  command: show service id 21 subscriber-hosts
+  ignore-null: False
+  iterate: ['[lag']
+  blacklist: ['^', 'MINOR']
+  tests:
+    - no-diff: [0]
+      info: "PASSED! {{ pre[0] }} is still present"
+      err: "FAILED! Change from {{ pre[0] }} to {{ post[0] }}"

@@ -1,0 +1,10 @@
+---
+    - show_sfm:
+      command: show sfm
+      ignore-null: False
+      iterate: [all]
+      blacklist: ['===', '---', 'SFM', 'State', 'Slot']
+      tests:
+        - no-diff: [0, 1, 2, 3]
+          info: "PASSED! {{ pre[1] }} in slot {{pre[0]}} is still {{ pre[2] }}/{{ pre[3] }}"
+          err: "FAILED! {{ pre[0] }} SFM was {{ pre[1] }} ({{ pre[2] }}/{{ pre[3] }}) is  now {{ post[1] }} ({{ post[2] }}/{{ post[3] }})"

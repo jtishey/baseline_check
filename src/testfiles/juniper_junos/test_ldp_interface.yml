@@ -1,0 +1,11 @@
+---
+- show_ldp_interface:
+  command: show ldp interface 
+  ignore-null: False
+  iterate: [all]
+  blacklist: [Interface, '^', error, count, unning]
+  tests:
+    - no-diff: [0, 2]
+      info: "PASSED! LDP interface {{ pre[0] }} still has {{ pre[2] }} neighbors"
+      err: "FAILED! LDP interface {{ pre[0] }} changed from {{ pre[2] }} to {{ post[2] }} neighbors"
+

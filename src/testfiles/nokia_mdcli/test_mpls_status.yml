@@ -1,0 +1,10 @@
+---
+- show_mpls_status:
+  command: show router mpls status
+  ignore-null: False
+  iterate: [LSPs]
+  blacklist: [Database]
+  tests:
+    - no-diff: [0, -3, -2, -1]
+      info: "PASSED! {{ pre[0] }} LSPs {{ pre[-3] }} originated, {{ pre[-2] }} transit, and {{ pre[-1] }} terminated"
+      err: "FAILED! {{ pre[0] }} LSPs changed from {{ pre[-3] }}/{{ pre[-2] }}/{{ pre[-1] }} and now has {{ post[-3] }}/{{ post[-2] }}/{{ post[-1] }}"

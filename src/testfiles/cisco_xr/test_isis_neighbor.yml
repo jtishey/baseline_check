@@ -1,0 +1,11 @@
+---
+- show_isis_adjacency:
+  command: show isis adjacency
+  ignore-null: False
+  iterate: [all]
+  blacklist: [BFD, adjacenc, Interface, '^', Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+  tests:
+    - no-diff: [1, 0]
+      info: "PASSED! ISIS adj to {{ pre[0] }} on {{ pre[1] }} is still Up"
+      err: "FAILED! ISIS adj to {{ pre[0] }} on {{ pre[1] }} failed check"
+

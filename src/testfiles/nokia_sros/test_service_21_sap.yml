@@ -1,0 +1,10 @@
+---
+- show_service_21_sap:
+  command: show service id 21 sap
+  ignore-null: True
+  iterate: [all]
+  blacklist: ['====', '----', 'Summary', 'PortID', 'QoS', '^', 'MINOR']
+  tests:
+    - no-diff: [0, -1, -2]
+      info: "PASSED! Port {{ pre[0] }} is still {{ pre[-2] }}/{{pre[-1] }}"
+      err: "FAILED! Port {{ pre[0] }} was {{ pre[-2] }}/{{ pre[-1] }} and is now {{ post[-2] }}/{{ post[-1] }}"

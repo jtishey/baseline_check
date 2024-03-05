@@ -1,0 +1,10 @@
+---
+- show_isis_interface:
+  command: show router isis interface
+  ignore-null: False
+  iterate: [all]
+  blacklist: ['---', '===', 'Interface', 'system', '^', 'MINOR', Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+  tests:
+    - no-diff: [0, -1]
+      info: "PASSED! ISIS interface {{ pre[0] }} metric is still {{ pre[-1] }}"
+      err: "FAILED! ISIS interface {{ pre[0] }} metric changed from {{ pre[-1] }} to {{ post[-1] }}"

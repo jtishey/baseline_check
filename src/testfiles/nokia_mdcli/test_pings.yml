@@ -1,0 +1,14 @@
+---
+# List of ping commands to be run whcih will be tested automatiaclly
+- ping_hosts:
+  command: [
+        "//ping 4.2.2.2 count 2 timeout 1",
+        "//ping 8.8.8.8 count 2 timeout 1",
+        "//ping 151.213.14.80 count 2 timeout 1",
+        "//ping 151.213.8.123 count 2 timeout 1",
+        "//ping 151.213.8.124 count 2 timeout 1",
+        "//ping 169.130.64.130 count 2 timeout 1",
+        "//ping 151.213.14.2 count 2 timeout 1",
+        "//ping 40.138.82.119 count 2 timeout 1",
+        "//ping 151.213.14.54 count 2 timeout 1"
+]

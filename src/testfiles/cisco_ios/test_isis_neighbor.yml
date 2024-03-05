@@ -1,0 +1,10 @@
+---
+- show_isis_neighbor:
+  command: show isis neighbor
+  ignore-null: True
+  iterate: [all]
+  blacklist: [Tag, nterface, '^', isis, minute, ncomplete, Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+  tests:
+    - no-diff: [-5, 0, -3]
+      info: "PASSED! ISIS adj to {{ pre[0] }} on {{ pre[-5] }} is still {{ pre[-3] }}"
+      err: "FAILED! ISIS adj to {{ pre[0] }} on {{ pre[-5] }} was {{ pre[-3] }} and is now {{ post[-3]}}"

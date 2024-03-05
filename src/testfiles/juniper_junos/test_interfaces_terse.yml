@@ -1,0 +1,10 @@
+---
+- show_interfaces_terse:
+  command: show interfaces terse
+  ignore-null: False
+  iterate: ['ge-', 'xe-', 'et-', 'at-', 'gr-', 'vt-', 'so-', 't3-']
+  blacklist: []
+  tests:
+    - no-diff: [0, 1, 2]
+      info: "PASSED! Interface {{ pre[0] }} is still {{ pre[1] }}/{{ pre[2] }}"
+      err: "FAILED! Interface {{ pre[0] }} was {{ pre[1] }}/{{ pre[2] }} and is now {{ post[1] }}/{{ post[2] }}"

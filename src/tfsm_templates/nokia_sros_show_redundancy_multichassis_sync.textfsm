@@ -1,0 +1,44 @@
+Value Required PEER_IP (\S+)
+Value PEER_NAME (.*)
+Value DESCRIPTION (.*)
+Value AUTHENTICATION (\S+)
+Value SOURCE_IP (\S+)
+Value ADMIN_STATE (\S+)
+Value SYNC_ADMIN_STATE (\S+)
+Value SYNC_OPER_STATE (\S+)
+Value SYNC_OPER_FLAGS (\S+)
+Value DB_SYNC_STATE (\S+)
+Value NUM_ENTRIES (\S+)
+Value LCL_DELETED_ENTRIES (\S+)
+Value ALARM_ENTRIES (\S+)
+Value OMCR_STANDBY_ENTRIES (\S+)
+Value OMCR_ALARM_ENTRIES (\S+)
+Value REM_NUM_ENTRIES (\S+)
+Value REM_LCL_DELETED_ENTRIES (\S+)
+Value REM_ALARM_ENTRIES (\S+)
+Value REM_OMCR_STANDBY_ENTRIES (\S+)
+Value REM_OMCR_ALARM_ENTRIES (\S+)
+
+
+Start
+  ^Peer IP Address\s+:\s+${PEER_IP}
+  ^Peer Name\s+:\s+${PEER_NAME}$$
+  ^Description\s+:\s+${DESCRIPTION}$$
+  ^Authentication\s+:\s+${AUTHENTICATION}
+  ^Source IP Address\s+:\s+${SOURCE_IP}
+  ^Admin State\s+:\s+${ADMIN_STATE}
+  ^Sync Admin State\s+:\s+${SYNC_ADMIN_STATE}
+  ^Sync Oper State\s+:\s+${SYNC_OPER_STATE}
+  ^Sync Oper Flags\s+:\s+${SYNC_OPER_FLAGS}
+  ^DB Sync State\s+:\s+${DB_SYNC_STATE}
+  ^Num Entries\s+:\s+${NUM_ENTRIES}
+  ^Lcl Deleted Entries\s+:\s+${LCL_DELETED_ENTRIES}
+  ^Alarm Entries\s+:\s+${ALARM_ENTRIES}
+  ^OMCR Standby Entries\s+:\s+${OMCR_STANDBY_ENTRIES}
+  ^OMCR Alarm Entries\s+:\s+${OMCR_ALARM_ENTRIES}
+  ^Rem Num Entries\s+:\s+${REM_NUM_ENTRIES}
+  ^Rem Lcl Deleted Entries\s+:\s+${REM_LCL_DELETED_ENTRIES}
+  ^Rem Alarm Entries\s+:\s+${REM_ALARM_ENTRIES}
+  ^Rem OMCR Standby Entries\s+?:\s+${REM_OMCR_STANDBY_ENTRIES}
+  ^Rem OMCR Alarm Entries\s+:\s+${REM_OMCR_ALARM_ENTRIES}
+  ^====  -> Record

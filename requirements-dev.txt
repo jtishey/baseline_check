@@ -1,0 +1,8 @@
+black
+flake8
+pydocstring
+pyflakes
+pylama
+pytest
+pytest-azurepipelines
+tox

@@ -1,0 +1,11 @@
+---
+- show_redundancy:
+  command: show redundancy
+  ignore-null: True
+  iterate: ['Active Location', 'Operating Redundancy Mode']
+  blacklist: ['^', '----', '^']
+  tests:
+    - no-diff: [0, -1]
+      info: "PASSED! {{ pre[0] }} is still {{ pre[-1] }}"
+      err: "FAILED! {{ pre[0] }} was {{ pre[-1] }} and is now {{ post[-1] }}"
+

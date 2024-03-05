@@ -1,0 +1,10 @@
+--- 
+- show_ldp_neighbor:
+  command: show mpls ldp neighbor brief
+  ignore-null: False
+  iterate: [all]
+  blacklist: [Peer, '----', '^', Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+  tests:
+    - delta: [0, -2, .01]
+      info: "PASSED! LDP neighbor {{ pre[0] }} is still within 1% of {{ pre[-2] }} addresses with {{ pre[-2] }} ( {{delta }} change)"
+      err: "FAILED! LDP neighbor {{ pre[0] }} changed > 1%, was {{ pre[-2] }} addresses now {{ post[-2] }} addresses ({{ delta }} change)"

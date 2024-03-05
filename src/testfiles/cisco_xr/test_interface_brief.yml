@@ -1,0 +1,10 @@
+---
+- show_interface_brief:
+  command: show ip interface brief | e Vi
+  ignore-null: False
+  iterate: [all]
+  blacklist: [Interface, '^', Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+  tests:
+    - no-diff: [0, 2, 3]
+      info: "PASSED! Interface {{ pre[0] }} is still {{ pre[2] }}/{{ pre[3] }}"
+      err: "FAILED! Interface {{ pre[0] }} was {{ pre[2] }}/{{ pre[3] }} and is now {{ post[2] }}/{{ post[3] }}"

@@ -1,0 +1,10 @@
+---
+- show_hsrp:
+  command: show hsrp
+  ignore-null: True
+  iterate: ['Active', 'local', 'unknown', 'Init']
+  blacklist: ['State', '---', '^', Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+  tests:
+    - no-diff: [0, 4, 5]
+      info: "PASSED! HSRP on {{ pre[0] }} is still {{ pre[4] }} / {{ pre[5] }}"
+      err: "FAILED! HSRP on {{ pre[0] }} changed from {{ pre[4] }} / {{ pre[5] }} to {{ post[4] }} / {{ post[5] }}"

@@ -1,0 +1,10 @@
+---
+- show_vrrp:
+  command: show vrrp
+  ignore-null: True
+  iterate: ['Master', 'local', 'Backup', 'Init', 'unknown']
+  blacklist: ['VRouter', '---', '^', Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+  tests:
+    - no-diff: [0, 4, 5]
+      info: "PASSED! VRRP on {{ pre[0] }} is still {{ pre[4] }} / {{ pre[5] }}"
+      err: "FAILED! VRRP on {{ pre[0] }} changed from {{ pre[4] }} / {{ pre[5] }} to {{ post[4] }} / {{ post[5] }}"

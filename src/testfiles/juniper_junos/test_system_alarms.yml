@@ -1,0 +1,10 @@
+---
+- show_system_alarms:
+  command: show system alarms
+  ignore-null: False
+  iterate: [all]
+  blacklist: ['^', 'No alarms']
+  tests:
+    - not-exists: [0]
+      info: "PASSED! No active system alarms"
+      err: "FAILED! There are active system alarms"

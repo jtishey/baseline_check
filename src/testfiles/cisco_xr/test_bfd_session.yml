@@ -1,0 +1,10 @@
+---
+- show_bfd_session:
+  command:  show bfd session
+  ignore-null: True
+  iterate: ['UP', 'DOWN']
+  blacklist: ['ADMIN', 'n/a', Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+  tests:
+    - no-diff: [0, 4]
+      info: "PASSED! BFD neighbor on {{ pre[0] }} is still {{ pre[4] }}"
+      err: "FAILED! BFD neighbor on {{ pre[0] }} was {{ pre[4] }} and is now {{ post[4] }}"

@@ -1,0 +1,10 @@
+---
+- show_route_summary:
+  command: show ip route summary
+  ignore-null: False
+  iterate: ['isis', 'bgp']
+  blacklist: []
+  tests:
+    - delta: [0, 2, .01]
+      info: "PASSED! {{ pre[0] }} routes within 1%, was {{ pre[2] }} now {{ post[2] }} ({{ delta }} change)"
+      err: "FAILED! {{ pre[0] }} routes changed > 1%, was {{ pre[2] }} now {{ post[2] }} ({{ delta }} change)"

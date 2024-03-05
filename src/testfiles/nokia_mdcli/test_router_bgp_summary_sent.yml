@@ -1,0 +1,10 @@
+---
+- show_router_bgp_summary_sent:
+  command: show router bgp summary sent
+  ignore-null: False
+  iterate: [all]
+  blacklist: []
+  tests:
+    - delta: [0, 2, .01]
+      info: "PASSED! BGP sent routes to {{ pre[0] }} within 1%: {{ pre[2] }}/{{ post[2] }} ({{delta}})"
+      err: "FAILED! BGP sent routes to {{ pre[0] }} changed >1%: {{ pre[2] }}/{{ post[2] }} ({{delta}})"

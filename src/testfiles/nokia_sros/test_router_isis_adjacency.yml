@@ -1,0 +1,10 @@
+---
+- show_router_isis_adjacency:
+  command:  show router isis adjacency 
+  ignore-null: False
+  iterate: [L2, L1]
+  blacklist: []
+  tests:
+    - no-diff: [4, 0, 2]
+      info: "PASSED! ISIS adj to {{ pre[0] }} on {{ pre[4] }} is still {{ pre[2] }}"
+      err: "FAILED! ISIS adj to {{ pre[0] }} on {{ pre[4] }} was {{ pre[2] }} and is now {{ post[2] }}"

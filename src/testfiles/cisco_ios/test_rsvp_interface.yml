@@ -1,0 +1,11 @@
+---
+- show_rsvp_interface:
+  command:  show ip rsvp int
+  ignore-null: True
+  iterate: [all]
+  blacklist: [nterface, '^', rsvp, minute, Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+  tests:
+    - no-diff: [0, 1]
+      info: "PASSED! RSVP interface {{ pre[0] }} is still {{ pre[1] }}"
+      err: "FAILED! RSVP interface {{ pre[0] }} was {{ pre[1] }} and is now {{ post[1] }}"
+

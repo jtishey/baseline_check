@@ -1,0 +1,11 @@
+---
+- show_bgp_summary:
+  command: show ip bgp all summary
+  ignore-null: True
+  section: ['For address family: ']
+  iterate: [all]
+  blacklist: [BGP, memory, Neighbor, configuration, ^, Active, Idle, Closing, show, minute, Dampening, Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+  tests:
+    - delta: [0, -1, .01]
+      info: "PASSED! BGP neighbor {{ pre[0] }} ({{ section_id }}) within 1%, was {{ pre[-1] }} now {{ post[-1] }} ({{ delta }} change)"
+      err: "FAILED! BGP neighbor {{ pre[0] }} ({{ section_id }}) changed > 1%, was {{ pre[-1] }} now {{ post[-1] }} ({{ delta }} change)"

@@ -1,0 +1,10 @@
+---
+- show_bfd_neighbor:
+  command: show bfd neighbor
+  ignore-null: True
+  iterate: [all]
+  blacklist: [Addr, '^', eighbor, ession, minute, Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+  tests:
+    - no-diff: [-1, -2]
+      info: "PASSED! BFD neighbor on {{ pre[-1] }} is still {{ pre[-2] }}"
+      err: "FAILED! BFD neighbor on {{ pre[-1] }} was {{ pre[-2] }} and is now {{ post[-2] }}"

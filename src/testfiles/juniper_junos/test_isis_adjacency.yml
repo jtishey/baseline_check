@@ -1,0 +1,10 @@
+---
+- show_isis_adjacency:
+  command: show isis adjacency
+  ignore-null: False
+  iterate: [all]
+  blacklist: [Interface, '^', error, unning]
+  tests:
+    - no-diff: [0,1,3]
+      info: "PASSED! ISIS adj to {{ pre[1] }} on {{ pre[0] }} is still {{ pre[3] }}"
+      err: "FAILED! ISIS adj on {{ pre[0] }} was {{ pre[1] }} ({{ pre[3] }}) and is now {{ post[1] }} ({{ post[3] }})"

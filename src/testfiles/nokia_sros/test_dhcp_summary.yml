@@ -1,0 +1,10 @@
+---
+- show_dhcp_summary:
+  command: show router dhcp local-dhcp-server "DHCP" summary 
+  ignore-null: True
+  iterate: ['/']
+  blacklist: ['Use', 'Lease', 'Failover', 'pool', '(R)']
+  tests:
+    - delta: [0, 3, 0.02]
+      info: "PASSED! Local Pool 'DHCP' for {{ pre[0] }} changed from {{ pre[3] }}% to {{ post[3] }}% free ({{ delta }}% change)"
+      err: "FAILED! Local Pool 'DHCP' for {{ pre[0] }} changed > 2% from {{ pre[3] }}% to {{ post[3] }}% free ({{ delta }}% change)"

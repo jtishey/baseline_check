@@ -1,0 +1,10 @@
+---
+- show_cef_exception:
+  command: show mls cef exception status
+  ignore-null: True
+  iterate: ['TRUE']
+  blacklist: []
+  tests:
+    - not-exists: [-1]
+      info: "PASSED! No exceptions found"
+      err: "FAILED! CEF exceptions are present"

@@ -1,0 +1,10 @@
+---
+- show_router_ldp_session:
+  command: show router ldp session
+  ignore-null: False
+  iterate: ['.']
+  blacklist: ['LDP', '--', '==', 'MINOR', '^', 'Session', 'Type', 'Entries']
+  tests:
+    - no-diff: [0, 2]
+      info: "PASSED! LDP session on {{ pre[0] }} is still {{ pre[2] }}"
+      err: "FAILED! LDP session on {{ pre[0] }} was {{ pre[2] }} and is now {{ post[2] }}"

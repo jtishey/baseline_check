@@ -1,0 +1,10 @@
+---
+- show_route_summary:
+  command: show route static
+  ignore-null: False
+  iterate: ['connected']
+  blacklist: ['^', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+  tests:
+    - no-diff: [1, -1]
+      info: "PASSED! {{ pre[1] }} is still {{ pre[-1] }}"
+      err: "FAILED! {{ pre[1] }} was {{ pre[-1] }} now {{ post[-1] }}"

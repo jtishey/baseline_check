@@ -1,0 +1,10 @@
+---
+- show_vrrp_summary:
+  command: show vrrp summary
+  ignore-null: True
+  iterate: [all]
+  blacklist: [Interface, subsystem, vip, running]
+  tests:
+    - no-diff: [0, 1, 3]
+      info: "PASSED! VRRP on {{ pre[0] }} is still {{ pre[1] }} / {{ pre[3] }}"
+      err: "FAILED! VRRP on {{ pre[0] }} changed from {{ pre[1] }} / {{ pre[3] }} to {{ post[1] }} / {{ post[3] }}"

@@ -1,0 +1,11 @@
+---
+- show_ldp_neighbor:
+  command: show ldp neighbor
+  ignore-null: False
+  iterate: [all]
+  blacklist: [Interface, '^', error, unning]
+  tests:
+    - no-diff: [1, 0]
+      info: "PASSED! LDP adj on {{ pre[1] }} still up to {{ pre[0] }}"
+      err: "FAILED! LDP adj on {{ pre[1] }} was {{ pre[0] }} and is now {{ post[0] }}"
+

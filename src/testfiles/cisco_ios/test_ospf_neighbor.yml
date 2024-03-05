@@ -1,0 +1,10 @@
+---
+- show_ospf_neighbor:
+  command: show ip ospf neighbor
+  ignore-null: True
+  iterate: [all]
+  blacklist: [eighbor, ncomplete, Mon, Tue, Wed, Thu, Fri, Sat, Sun]
+  tests:
+    - no-diff: [0, 2, -1]
+      info: "PASSED! OSPF adj {{ pre[0] }} on {{ pre[-1] }} is still {{ pre[2] }}"
+      err: "FAILED! OSPF adj {{ pre[0] }} on {{ pre[-1] }} was {{ pre[2] }} and is now {{ post[2] }} on {{ post[-1] }}"

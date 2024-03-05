@@ -1,0 +1,11 @@
+---
+- show_chassis_hardware detail:
+  command: show chassis hardware detail
+  ignore-null: False
+  iterate: [FPC, MIC, QXM, CD, DIMM, PEM]
+  blacklist: []
+  tests:
+    - no-diff: [5,0,1]
+      info: "PASSED! {{ pre[0] }} {{ pre[1] }} SN is still {{ pre[5] }}"
+      err: "FAILED! {{ pre[0] }} {{ pre[1] }} SN changed from {{ pre[5] }} to {{ post[5] }}"
+

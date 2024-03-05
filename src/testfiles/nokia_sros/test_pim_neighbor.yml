@@ -1,0 +1,10 @@
+---
+- show_pim_neighbor:
+  command: show router pim neighbor
+  ignore-null: True
+  iterate: [':']
+  blacklist: ['N', '---', '===', Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+  tests:
+    - no-diff: [0]
+      info: "PASSED! PIM neighbor {{ pre[0] }} is still present"
+      err: "FAILED! PIM neighbor {{ pre[0] }} changed to {{ post[0] }}"

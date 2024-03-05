@@ -1,0 +1,10 @@
+---
+- show_rsvp_interface:
+  command: show router rsvp interface
+  ignore-null: True
+  iterate: [all]
+  blacklist: ['Interface', '---', '===', 'Sessions', 'system', '^', 'MINOR:', '[]', '[/]',  Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+  tests:
+    - no-diff: [0, 1, 2]
+      info: "PASSED! RSVP interface {{ pre[0] }} still has {{ pre[1] }} Total / {{ pre[2] }} Active sessions"
+      err: "FAILED! RSVP interface {{ pre[0] }} changed from {{ pre[1] }}/{{ pre[2] }} to {{ post[1] }}/{{ post[2] }} Total/Active sessions"

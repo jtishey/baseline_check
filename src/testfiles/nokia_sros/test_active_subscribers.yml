@@ -1,0 +1,10 @@
+---
+- show_active_subscribers:
+  command: show service active-subscribers summary
+  ignore-null: False
+  iterate: [Total]
+  blacklist: ['^', 'MINOR']
+  tests:
+    - delta: [0, -1, .10]
+      info: "PASSED! Active subscribers within 10%, was {{ pre[-1] }} now {{ post[-1] }} ({{ delta }} change)"
+      err: "FAILED! Active subscribers changed > 10%, was {{ pre[-1] }} now {{ post[-1] }} ({{ delta }} change)"

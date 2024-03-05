@@ -1,0 +1,10 @@
+---
+- show_router_status:
+  command: show router status
+  ignore-null: False
+  iterate: ['Up', 'Down', 'configured']
+  blacklist: ['---', '===', 'Router', 'group', 'time', 'Static']
+  tests:
+    - no-diff: [0, 1, -1]
+      info: "PASSED! {{ pre[0] }} is still {{ pre[1] }} {{ pre[-1] }}"
+      err: "FAILED! {{ pre[0] }} changed from {{ pre[1] }} {{ pre[-1] }} to {{ post[1] }} {{ post[-1] }}"

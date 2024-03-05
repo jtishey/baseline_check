@@ -1,0 +1,197 @@
+
+[DEVICE] 172.16.49.143
+[KEYWORD] post
+[MOP] 4444
+[DEVICE_TYPE] juniper_junos
+[BASE_PROMPT] guest@vSRX1
+
+
+
+[COMMAND] show bfd session
+
+0 sessions, 0 clients
+Cumulative transmit rate 0.0 pps, cumulative receive rate 0.0 pps
+
+
+[COMMAND] show bgp summary
+BGP is not running
+
+
+[COMMAND] show chassis fpc
+                     Temp  CPU Utilization (%)   CPU Utilization (%)  Memory    Utilization (%)
+Slot State            (C)  Total  Interrupt      1min   5min   15min  DRAM (MB) Heap     Buffer
+  0  Online          -------------------- CPU less FPC --------------------
+
+
+[COMMAND] show interfaces terse
+Interface               Admin Link Proto    Local                 Remote
+ge-0/0/0                up    up
+ge-0/0/0.0              up    up   inet     172.16.49.143/24
+gr-0/0/0                up    up
+ip-0/0/0                up    up
+lsq-0/0/0               up    up
+lt-0/0/0                up    up
+mt-0/0/0                up    up
+sp-0/0/0                up    up
+sp-0/0/0.0              up    up   inet    
+                                   inet6   
+sp-0/0/0.16383          up    up   inet    
+ge-0/0/1                up    up
+ge-0/0/1.0              up    up   inet     172.16.212.57/24
+dsc                     up    up
+fti0                    up    up
+fxp0                    up    up
+fxp0.0                  up    up  
+gre                     up    up
+ipip                    up    up
+irb                     up    up
+lo0                     up    up
+lo0.16384               up    up   inet     127.0.0.1           --> 0/0
+lo0.16385               up    up   inet     10.0.0.1            --> 0/0
+                                            10.0.0.16           --> 0/0
+                                            128.0.0.1           --> 0/0
+                                            128.0.0.4           --> 0/0
+                                            128.0.1.16          --> 0/0
+lo0.32768               up    up  
+lsi                     up    up
+mtun                    up    up
+pimd                    up    up
+pime                    up    up
+pp0                     up    up
+ppd0                    up    up
+ppe0                    up    up
+st0                     up    up
+tap                     up    up
+vlan                    up    down
+
+
+[COMMAND] show ipv6 neighbors
+
+
+[COMMAND] show isis adjacency
+IS-IS instance is not running
+
+
+[COMMAND] show isis interface
+IS-IS instance is not running
+
+
+[COMMAND] show ospf neighbor
+OSPF instance is not running
+
+
+[COMMAND] show l2circuit connections
+
+
+[COMMAND] show ldp interface
+LDP instance is not running
+
+
+[COMMAND] show ldp neighbor
+LDP instance is not running
+
+
+[COMMAND] show ldp session
+LDP instance is not running
+
+
+[COMMAND] show pim interfaces
+PIM instance is not running
+
+
+[COMMAND] show pim neighbors
+PIM instance is not running
+
+
+[COMMAND] show route summary
+Router ID: 172.16.49.143
+
+inet.0: 5 destinations, 6 routes (5 active, 0 holddown, 0 hidden)
+              Direct:      2 routes,      2 active
+               Local:      2 routes,      2 active
+     Access-internal:      2 routes,      1 active
+
+inet6.0: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
+               INET6:      1 routes,      1 active
+
+
+[COMMAND] show rsvp interface
+RSVP not configured
+
+
+[COMMAND] show rsvp session
+RSVP not configured
+
+
+[COMMAND] show vrrp summary
+warning: vrrp subsystem not running - not needed by configuration.
+
+
+[COMMAND] show system alarms
+1 alarms currently active
+Alarm time               Class  Description
+2024-03-01 12:52:17 UTC  Minor  Rescue configuration is not set
+
+
+[COMMAND] show task replication
+        Stateful Replication: Disabled
+        RE mode: Not Applicable
+
+
+[COMMAND] show configuration | display set
+set version 18.4R1.8
+set system login user guest uid 2000
+set system login user guest class super-user
+set system login user guest authentication encrypted-password "$6$0TUTP0sP$V.BV7D9kiTM3lPmkYrRt6vEOyEuufrOnxISVM7.d/8UkwPU4f8BbUPBJzN0/4vh5jeYsKouU9u9vAp7Uy/BX6/"
+set system login password minimum-character-changes 4
+set system login password minimum-length 6
+set system root-authentication encrypted-password "$6$iB1iHDCb$8yLkJlMicd6ENG4qjOkY5l5iwiWKgPCNN.15uEDsMiDHeEGzeOmtN3FTR9sCiSxW75dd8T4kn9NcH9/9g7mbZ1"
+set system services ssh
+set system services web-management http interface fxp0.0
+set system host-name vSRX1
+set system syslog user * any emergency
+set system syslog file messages any any
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands any
+set system license autoupdate url https://ae1.juniper.net/junos/key_retrieval
+set security forwarding-options family mpls mode packet-based
+set interfaces ge-0/0/0 unit 0 family inet dhcp
+set interfaces ge-0/0/1 unit 0 family inet dhcp
+set interfaces fxp0 unit 0
+set snmp name vSRX1
+set snmp community public authorization read-only
+
+
+[COMMAND] ping rapid 1.1.1.1
+PING 1.1.1.1 (1.1.1.1): 56 data bytes
+!!!!!
+--- 1.1.1.1 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 44.189/64.412/134.220/35.088 ms
+
+
+[COMMAND] ping rapid 4.2.2.1
+PING 4.2.2.1 (4.2.2.1): 56 data bytes
+!!!!!
+--- 4.2.2.1 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 41.122/68.759/120.895/32.346 ms
+
+
+[COMMAND] ping rapid 4.2.2.2
+PING 4.2.2.2 (4.2.2.2): 56 data bytes
+!!!!!
+--- 4.2.2.2 ping statistics ---
+5 packets transmitted, 5 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 39.068/82.804/245.487/81.375 ms
+
+
+[COMMAND] ping rapid routing-instance private 8.8.8.8
+ping: invalid routing instance `private'
+
+
+[COMMAND] ping rapid 8.8.8.9
+PING 8.8.8.9 (8.8.8.9): 56 data bytes
+.....
+--- 8.8.8.9 ping statistics ---
+5 packets transmitted, 0 packets received, 100% packet loss

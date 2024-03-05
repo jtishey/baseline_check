@@ -1,0 +1,10 @@
+---
+- show_task_replication:
+  command: show task replication
+  ignore-null: True
+  iterate: [all]
+  blacklist: ['Stateful', 'mode:', 'Protocol', '^', error]
+  tests:
+    - no-diff: [0, 1]
+      info: "PASSED! {{ pre[0] }} task replication is {{ pre[1] }}"
+      err: "FAILED! {{ pre[0] }} task replication was {{ pre[1] }} and is now {{ post[1] }}"

@@ -1,0 +1,10 @@
+---
+- show_service_21_vlan_summary:
+  command: show service id 21 vlans summary
+  ignore-null: True
+  iterate: [all]
+  blacklist: []
+  tests:
+    - no-diff: [0, 2]
+      info: "PASSED! Active subs still present on VLAN {{ pre[0] }}"
+      err: "FAILED! VLAN {{ pre[0] }} had {{ pre[2] }} subs, now has {{ post[2] }} subs"

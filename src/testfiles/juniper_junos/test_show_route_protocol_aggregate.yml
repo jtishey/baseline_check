@@ -1,0 +1,10 @@
+---
+- show_route_protocol_aggregate:
+  command: show route protocol aggregate table inet.0 | except Discard
+  ignore-null: False
+  iterate: [all]
+  blacklist: ['ctive', 'omplete']
+  tests:
+    - no-diff: [0] 
+      info: "PASSED! {{ pre[0] }} is still {{ pre[0] }}"
+      err: "FAILED! {{ pre[0] }} changed, now {{ post[0] }}"
